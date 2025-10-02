@@ -22,6 +22,10 @@ export class Parser {
   async exportObject(reference: string, outputPath: string): Promise<Buffer> {
     const xcodeVersion = await getXcodeVersion()
 
+    core.warning(
+      `QQQQQ exportObject!`
+    )
+
     const args = [
       'xcresulttool',
       'export',
@@ -35,10 +39,19 @@ export class Parser {
       reference
     ]
 
-    await exec.exec('echo', ['QQQQQ Xcode Version: ', xcodeVersion])
+    core.warning(
+      `QQQQQ Xcode Version xcodeVersion: ${xcodeVersion}`
+    )
 
     if (xcodeVersion >= 16) {
+      core.warning(
+        `QQQQQ Adding Legacy`
+      )
       args.push('--legacy')
+    } else {
+      core.warning(
+        `QQQQQ NOT Adding Legacy`
+      )
     }
 
     const options = {
@@ -82,10 +95,21 @@ export class Parser {
       args.push(reference)
     }
 
-    await exec.exec('echo', ['QQQQQ2 Xcode Version: ', xcodeVersion])
+    core.warning(
+      `QQQQQ Xcode Version xcodeVersion: ${xcodeVersion}`
+    )
 
     if (xcodeVersion >= 16) {
+      core.warning(
+        `QQQQQ Adding Legacy`
+      )
+
       args.push('--legacy')
+    } else {
+      core.warning(
+        `QQQQQ NOT Adding Legacy`
+      )
+
     }
 
     let output = ''
