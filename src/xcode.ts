@@ -9,7 +9,7 @@ export async function getXcodeVersion(): Promise<number> {
         output += data.toString()
       }
     },
-    silent: !core.isDebug()
+    silent: false
   }
   await exec.exec('xcodebuild', ['-version'], options)
   const match = output.match(/Xcode (\d+)/)

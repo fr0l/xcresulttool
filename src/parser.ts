@@ -42,7 +42,7 @@ export class Parser {
     }
 
     const options = {
-      silent: !core.isDebug()
+      silent: false
     }
 
     await exec.exec('xcrun', args, options)
@@ -54,7 +54,7 @@ export class Parser {
 
     let output = ''
     const options = {
-      silent: !core.isDebug(),
+      silent: false,
       listeners: {
         stdout: (data: Buffer) => {
           output += data.toString()
@@ -90,7 +90,7 @@ export class Parser {
 
     let output = ''
     const options = {
-      silent: !core.isDebug(),
+      silent: false,
       listeners: {
         stdout: (data: Buffer) => {
           output += data.toString()
