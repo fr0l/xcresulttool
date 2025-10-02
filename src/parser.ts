@@ -35,6 +35,8 @@ export class Parser {
       reference
     ]
 
+    await exec.exec('echo', ['QQQQQ Xcode Version: ', xcodeVersion])
+
     if (xcodeVersion >= 16) {
       args.push('--legacy')
     }
@@ -79,6 +81,8 @@ export class Parser {
       args.push('--id')
       args.push(reference)
     }
+
+    await exec.exec('echo', ['QQQQQ2 Xcode Version: ', xcodeVersion])
 
     if (xcodeVersion >= 16) {
       args.push('--legacy')
